@@ -1,0 +1,31 @@
+<div class="container">
+    <p>
+        <input #query (keyup)="filter(query.value)" type="text" class="form-control" placeholder="Rechercher...">
+    </p>
+</div>
+
+<table class="table table-stripped">
+    <thead class="list">
+        <th>Sr. No</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Gender</th>
+        <th>Hobbies</th>
+        <th>Country</th>
+        <th>Actions</th>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let student of filteredStudents; let i = index;">
+            <td>{{i+1}}</td>
+            <td>{{student.first_name}}</td>
+            <td>{{student.last_name}}</td>
+            <td>{{student.email}}</td>
+            <td>{{student.gender}}</td>
+            <td>{{student.hobbies}}</td>
+            <td>{{student.country}}</td>
+            <td> <a [routerLink]="['/edit', student.id]" class="btn btn-success btn2">EDIT</a> &nbsp;<button (click)="deleteStudent(student)" class="btn btn-danger"> Delete</button> </td>
+        </tr>
+    </tbody>
+</table>

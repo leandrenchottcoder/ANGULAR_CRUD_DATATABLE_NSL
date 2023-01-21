@@ -1,0 +1,73 @@
+<div class="container">
+    <div class="card">
+
+        <div class="card-header text-white bg-primary text-center">
+            <h1>Detail Student</h1>
+
+        </div>
+        <div class="card-body">
+            <form [formGroup]="addForm" novalidate class="form">
+                <div class="row">
+                    <div class="col-md-8" id="text-font-family">
+                        <div class="row">
+                            <div class="col-md-6">First Name</div>
+                            <div class="col-md-6"><input title="input" type="text" class="form-control" name="first_name" formControlName="first_name"></div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">Last Name</div>
+                            <div class="col-md-6"><input title="input" class="form-control" type="text" name="last_name" formControlName="last_name"></div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">Email</div>
+                            <div class="col-md-6"><input title="input" type="text" class="form-control" name="email" formControlName="email"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">Password</div>
+                            <div class="col-md-6"><input title="input" type="text" class="form-control" name="password" formControlName="password"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">Gender</div>
+                            <div class="col-md-6">
+                                <label> Male : <input title="input" formControlName="gender" type="radio" name="gender" value="male"> Female : <input formControlName="gender" type="radio" name="gender" value="female"></label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">Hobbies</div>
+                            <div class="col-md-6">
+                                <div *ngFor="let result of HobbyArray">
+                                    <input title="input" type="checkbox" [ngModel]="result.value" (ngModelChange)="result.value=$event;addForm.get('hobbyField').setValue(parse())" [ngModelOptions]="{standalone:true}">{{result.name}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-md-6">Country</div>
+                            <div class="col-md-6">
+                                <select formControlName="country" name="country" class="form-control" title="country">
+                                <option value="india">India</option>
+                                <option value="china">China</option>
+                                <option value="usa">USA</option>
+                                <option value="côte d'ivoire">Côte d'ivoire</option>
+                                <option value="france">France</option>
+                                </select>
+                            </div>
+                        </div>
+
+
+
+
+                    </div>
+                    <div class="col-md-4">
+                        <img class="card-img-top" [src]="imgUrl" alt="Card image cap">
+
+                    </div>
+                </div>
+            </form>
+            <div class="card-footer">
+                <button class="material-icons bg-primary text-white p-2 rounded-circle btn">
+            <span class="material-icons" [routerLink]="['/']">keyboard_arrow_left</span>
+          </button>
+            </div>
+        </div>
+    </div>

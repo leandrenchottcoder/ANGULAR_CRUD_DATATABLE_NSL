@@ -1,0 +1,94 @@
+<!-- Premier modèle de card -->
+<!-- <div class="container">
+    <h2 *ngIf="filteredStudents && filteredStudents.length > 0">Nombre Total d'étudiant: <span class="text-success">{{filteredStudents.length}}</span></h2>
+
+
+    <div class="my-2">
+        <div class="row">
+            <div class="col-md-4">
+                <span class="filtre">
+            Filtre actuel:
+          </span>
+                <b>{{ query.value}}</b>
+            </div>
+            <div class="col-md-8 form-group">
+                <input title="title" type="text" class="form-control" #query (keyup)="filter(query.value)">
+            </div>
+        </div>
+
+    </div>
+    <div class="row row-cols-1 row-cols-md-3">
+        <div class="col mb-4" *ngFor="let student of filteredStudents; let i = index">
+            <div class="card">
+                <img class="card-img-top" [src]="imgUrl" title="{{ student.first_name |uppercase}}" alt="{{student.first_name}}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ student.first_name}}</h5>
+                    <p class="card-text">{{student.last_name}}</p>
+                    <b><p class=""> Pays : {{ student.country}}</p></b>
+                    <div class="d-flex justify-content-between align-items-baseline">
+                        <span class="material-icons bg-info text-white p-2 rounded-circle btn" [routerLink]="['/']">
+                        keyboard_arrow_right
+                      </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+<!-- ------------------------------------------------------------------------------------------------- -->
+
+<!-- Deuxième modèle de card -->
+<div class="container">
+    <h2 *ngIf="filteredStudents && filteredStudents.length > 0">Nombre Total d'étudiant: <span class="text-success">{{filteredStudents.length}}</span></h2>
+
+    <div class="my-2">
+        <div class="row">
+            <div class="col-md-4">
+                <span class="filtre">
+            Filtre actuel:
+          </span>
+                <b>{{ query.value}}</b>
+            </div>
+            <div class="col-md-8 form-group">
+                <input title="title" type="text" class="form-control" #query (keyup)="filter(query.value)">
+            </div>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-3">
+            <div class="sticky-top">
+                <div class="list-group">
+                    <a class="list-group-item list-group-item-action" [class.active]="'active'" routerLink="/">All Menu</a>
+                    <a class="list-group-item list-group-item-action" [class.active]="''" routerLink="/home">Home</a>
+                    <a class="list-group-item list-group-item-action" [class.active]="''" routerLink="/">Liste</a>
+                    <a class="list-group-item list-group-item-action" [class.active]="''" routerLink="/">Recherche</a>
+
+                </div>
+            </div>
+
+        </div>
+        <div class="col">
+            <div class="row">
+                <ng-container *ngFor="let student of filteredStudents; let i = index">
+                    <div class="col">
+                        <div *ngIf="student.first_name" class="card">
+                            <img *ngIf="imgUrl" class="card-img-top" [src]="imgUrl" alt="{{ student.first_name }}">
+                            <div class="card-body">
+                                <h4 class="card-title">{{ student.first_name }}</h4>
+                                <p class="card-text">{{ student.last_name}}</p>
+                                <p class="card-text">{{ student.country}}</p>
+                            </div>
+                            <div class="card-footer text-center">
+                                <a [routerLink]="['/details', student.id]" class="btn btn-primary btn-block" style="width: 100%;">Details</a>&nbsp;
+                            </div>
+                        </div>
+
+                    </div>
+                    <div *ngIf="(i + 1) % 2 === 0" class="w-100"></div>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+</div>

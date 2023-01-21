@@ -1,0 +1,30 @@
+<nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
+    <a class="navbar-brand" [routerLink]="['/']" routerLinkActive="active"><b>&nbsp;NSL SERVICE</b></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/home']" routerLinkActive="active">Acceuil</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/card-list']" routerLinkActive="active">Card Etudiant</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/add-student']" routerLinkActive="active">Inscription</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/list-students']" routerLinkActive="active">Liste des inscrits</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/recherche-student']" routerLinkActive="active">Rechercher un étudiant</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<br><br>
+<div class="mt-5">
+    <router-outlet></router-outlet>
+</div>

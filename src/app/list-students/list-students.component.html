@@ -1,0 +1,56 @@
+<div class="container">
+    <div class="row justify-content-between">
+        <div class="col-4">
+            <h5 class="h3"></h5>
+        </div>
+        <div class="col-2">
+            <div class="row g-3 align-items-center">
+                <div class="col-auto">
+                    <label class="control-label" for="noOfRows">No. of Rows</label>
+                </div>
+                <div class="col-auto">
+                    <select title="title" name="noOfRows" (change)="onTableSizeChange($event)" class="form-select form-select-sm">
+        <option *ngFor="let size of tableSize" [ngValue]="size">
+          {{ size }}
+        </option>
+      </select>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <br>
+    <table class="table  table-bordered">
+        <thead class="">
+            <tr>
+                <th>Sr. No</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Gender</th>
+                <th>Hobbies</th>
+                <th>Country</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let student of students | paginate : pagingConfig; let i = index">
+
+                <!-- <tr *ngFor="let customer of customers"> -->
+                <td>{{i+1}}</td>
+                <td>{{student.first_name}}</td>
+                <td>{{student.last_name}}</td>
+                <td>{{student.email}}</td>
+                <td>{{student.gender}}</td>
+                <td>{{student.hobbies}}</td>
+                <td>{{student.country}}</td>
+                <td><a [routerLink]="['/edit', student.id]" class="btn btn-white btn2"><span class="material-icons text-success">edit</span></a> &nbsp;<button (click)="deleteStudent(student)" class="btn btn-white"><span class="material-icons text-danger">delete</span></button>                    </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <div class="d-flex justify-content-center">
+        <pagination-controls previousLabel="Prev" nextLabel="Next" (pageChange)="onTableDataChange($event)">
+        </pagination-controls>
+    </div>
+</div>
